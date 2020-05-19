@@ -1,5 +1,6 @@
 package br.com.tt.petshop.controller;
 
+import br.com.tt.petshop.dto.UnidadeDto;
 import br.com.tt.petshop.service.UnidadeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,9 @@ import java.util.List;
 public class InicialController {
 
     //@Autowired //não recomendo o uso - use construtor no lugar
+    // - Testes - Ter de fazer injeção de atributos privados
+    // - Performance - busca dos campos para injeção.
+    // - Bad Smell - não deixa tão explicita a quantidade de dependências que vocẽ tem.
     private UnidadeService unidadeService;
 
     public InicialController(UnidadeService unidadeService){
@@ -30,7 +34,7 @@ public class InicialController {
 
         System.out.println("Chamei o controller!!!"+this);
 
-        List<String> unidades = unidadeService.listarUnidades();
+        List<UnidadeDto> unidades = unidadeService.listarUnidades();
         model.addAttribute("unidades", unidades);
 
         return "unidade_lista";
