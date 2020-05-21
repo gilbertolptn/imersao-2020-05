@@ -17,10 +17,10 @@ public class InicialController {
     // - Testes - Ter de fazer injeção de atributos privados
     // - Performance - busca dos campos para injeção.
     // - Bad Smell - não deixa tão explicita a quantidade de dependências que vocẽ tem.
-    private UnidadeService unidadeService;
+    //private UnidadeService unidadeService;
 
     public InicialController(UnidadeService unidadeService){
-        this.unidadeService = unidadeService;
+        //this.unidadeService = unidadeService;
         System.out.println("Inicie o controller!!!"+this);
     }
 
@@ -28,17 +28,4 @@ public class InicialController {
     public String getPaginaInicial(){
         return "pagina_inicial";
     }
-
-    @RequestMapping("/admin/unidade/lista")
-    public String getUnidadeLista(Model model){
-
-        System.out.println("Chamei o controller!!!"+this);
-
-        List<UnidadeDto> unidades = unidadeService.listarUnidades();
-        model.addAttribute("unidades", unidades);
-
-        return "unidade_lista";
-    }
-
-
 }

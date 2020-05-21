@@ -25,12 +25,22 @@ public class UnidadeRepository {
                         (rs, rowNum) -> new UnidadeDto(
                                             rs.getInt("id"),
                                             rs.getString("nome"),
-                                            rs.getString("endereco"))
-                );
+                                            rs.getString("endereco")));
 
         //List<String> unidades = Arrays.asList("ZN", "ZS");
         //return unidades;
     }
+
+    public void criarUnidade(UnidadeDto unidadeDto){
+
+        String nome = unidadeDto.getNome();
+        String endereco = unidadeDto.getEndereco();
+
+        jdbcTemplate.update(
+                "insert into UNIDADE (nome, endereco) values (?, ?)",
+                nome, endereco);
+    }
+
 
 //    .query("select id,nome,endereco from unidade", this::converteResultSetEmUnidadeDto);
 //    private UnidadeDto converteResultSetEmUnidadeDto(ResultSet rs, int rowNum) throws SQLException {

@@ -21,4 +21,8 @@ public class UnidadeService {
     public List<UnidadeDto> listarUnidades() {
         return unidadeRepository.listarUnidades();
     }
+
+    public void criarUnidade(UnidadeDto unidadeDto){
+        unidadeRepository.criarUnidade(unidadeDto);
+    }
 }

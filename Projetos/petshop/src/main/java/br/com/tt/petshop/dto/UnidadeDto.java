@@ -12,6 +12,14 @@ public class UnidadeDto {
         this.endereco = endereco;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
     public String getDescricao() {
         return String.format("%s - %s", nome, endereco);
     }
