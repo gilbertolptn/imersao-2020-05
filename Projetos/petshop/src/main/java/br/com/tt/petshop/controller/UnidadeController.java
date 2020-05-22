@@ -36,8 +36,6 @@ public class UnidadeController {
         return "unidade_cadastro";
     }
 
-
-
     //Action - POST - receber dados (nome, endereco)
     @RequestMapping("acaoCadastrar")
     public ModelAndView acaoCadastrar(@RequestParam("nome")     String nome,
