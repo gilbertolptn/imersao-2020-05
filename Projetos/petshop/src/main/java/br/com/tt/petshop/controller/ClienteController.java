@@ -5,6 +5,8 @@ import br.com.tt.petshop.service.ClienteService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -28,4 +30,20 @@ public class ClienteController {
 
         return "cliente_lista";
     }
+
+    @RequestMapping("cadastro")
+    public String getPaginaCadastro(){
+        return "cliente_cadastro";
+    }
+
+    @RequestMapping("acaoCadastrar")
+    public ModelAndView acaoCadastrar(@RequestParam("nome") String nome,
+                                      @RequestParam("cpf") String cpf){
+
+        Cliente novoCliente = new Cliente(nome, cpf);
+        clienteService.criarCliente(novoCliente);
+
+        return new ModelAndView("cliente_cadastro");
+    }
+
 }
