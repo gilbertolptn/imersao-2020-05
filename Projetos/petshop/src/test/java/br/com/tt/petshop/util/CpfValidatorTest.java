@@ -3,6 +3,8 @@ package br.com.tt.petshop.util;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -33,7 +35,7 @@ class CpfValidatorTest {
         boolean resultado = new CpfValidator().verifica(cpf);
 
         //Verificação
-        Assertions.assertFalse(resultado, "Deveria ser um CPF Inválido pois tem letras!");
+        assertFalse(resultado, "Deveria ser um CPF Inválido pois tem letras!");
     }
 
     @Test
@@ -48,9 +50,71 @@ class CpfValidatorTest {
         Assertions.assertTrue(resultado, "Deveria ser um CPF Válido");
     }
 
-    //deveriaFalharEmCpfComFormatacaoELetras
-    //deveriaFalharEmCpfComFormatacaoIncorreta
-    //deveriaFalharComCpfMenorQue11Digitos
-    //deveriaFalharComCpfMaiorQue14Digitos
+    @Test
+    void deveriaFalharEmCpfComFormatacaoELetras(){
+        //Preparação
+        String cpf = "000.111.A22-33";
 
+        //Ação
+        boolean resultado = new CpfValidator().verifica(cpf);
+
+        //Verificação
+        assertFalse(resultado, "Deveria falhar pois contém letras");
+    }
+
+    @Test
+    void deveriaFalharEmCpfComFormatacaoIncorreta(){
+        //Preparação
+        String cpf = "000.111.2223-3";
+
+        //Ação
+        boolean resultado = new CpfValidator().verifica(cpf);
+
+        //Verificação
+        assertFalse(resultado, "Deveria falhar pois contém formatação inválida");
+    }
+
+    @Test
+    void deveriaFalharComCpfMenorQue11Digitos(){
+        //Preparação
+        String cpf = "000111222";
+
+        //Ação
+        boolean resultado = new CpfValidator().verifica(cpf);
+
+        //Verificação
+        assertFalse(resultado, "Deveria falhar pois contém menos de 11 dígitos");
+    }
+
+    @Test
+    void deveriaFalharComCpfMaiorQue14Digitos(){
+        //Preparação
+        String cpf = "000.111.222-334";
+
+        //Ação
+        boolean resultado = new CpfValidator().verifica(cpf);
+
+        //Verificação
+        assertFalse(resultado, "Deveria falhar pois contém mais de 14 dígitos");
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"111.222.334-00", "111.111.111-11", "000.111.000-99"})
+    void deveriaValidarComSucessoCpfsValidos(String cpf){
+        //Ação
+        boolean resultado = new CpfValidator().verifica(cpf);
+
+        //Verificação
+        assertTrue(resultado, "Deveria passar pois cpf é válido");
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"11.222.334-00", "111.11.111-11", "000.111.000-$9"})
+    void deveriaRetornarCpfsInValidos(String cpf){
+        //Ação
+        boolean resultado = new CpfValidator().verifica(cpf);
+
+        //Verificação
+        assertFalse(resultado, "Deveria falhar pois cpf é válido");
+    }
 }
