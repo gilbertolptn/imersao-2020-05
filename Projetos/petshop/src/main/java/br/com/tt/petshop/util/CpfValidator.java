@@ -12,7 +12,7 @@ public class CpfValidator {
      * 000.111.222-3x3 - valido com formatação
      * 000.1111.22-33 - invalido (por causa da máscara inválida)
      */
-    public boolean verifica(String cpf){
+    public boolean verificaSeCpfValido(String cpf){
 
         boolean valido = false;
 

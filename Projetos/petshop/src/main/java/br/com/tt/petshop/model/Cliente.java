@@ -31,4 +31,8 @@ public class Cliente {
     public String getDescricao(){
         return String.format("%s (%s)",this.nome, this.cpf);
     }
+
+    public String getCpf() {
+        return cpf;
+    }
 }
