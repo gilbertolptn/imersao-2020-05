@@ -41,6 +41,18 @@ public class UnidadeRepository {
                 nome, endereco);
     }
 
+    public UnidadeDto buscarPorId(Long idUnidade) {
+
+        return jdbcTemplate
+                //.queryForList("select nome from unidade", String.class);
+                .queryForObject("select id,nome,endereco from unidade where id = ?",
+                        new Object[]{idUnidade},
+                        (rs, rowNum) -> new UnidadeDto(
+                                rs.getInt("id"),
+                                rs.getString("nome"),
+                                rs.getString("endereco")));
+    }
+
 
 //    .query("select id,nome,endereco from unidade", this::converteResultSetEmUnidadeDto);
 //    private UnidadeDto converteResultSetEmUnidadeDto(ResultSet rs, int rowNum) throws SQLException {

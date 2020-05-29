@@ -25,4 +25,8 @@ public class UnidadeService {
     public void criarUnidade(UnidadeDto unidadeDto){
         unidadeRepository.criarUnidade(unidadeDto);
     }
+
+    public UnidadeDto buscarPorId(Long idUnidade) {
+        return unidadeRepository.buscarPorId(idUnidade);
+    }
 }
