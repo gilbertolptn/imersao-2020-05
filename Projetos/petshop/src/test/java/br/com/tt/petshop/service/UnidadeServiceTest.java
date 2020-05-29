@@ -30,7 +30,6 @@ class UnidadeServiceTest {
         verify(unidadeRepositoryMock).criarUnidade(unidade);
     }
 
-
     @Test
     void deveriaListarUnidades(){
         //Preparação
