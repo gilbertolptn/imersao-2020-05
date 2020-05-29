@@ -15,7 +15,8 @@ public class ClienteService {
     private ClienteRepository clienteRepository;
     private CpfValidator cpfValidator;
 
-    public ClienteService(ClienteRepository clienteRepository, CpfValidator cpfValidator) {
+    public ClienteService(ClienteRepository clienteRepository,
+                          CpfValidator cpfValidator) {
         this.clienteRepository = clienteRepository;
         this.cpfValidator = cpfValidator;
     }

@@ -1,7 +1,11 @@
 package br.com.tt.petshop.util;
 
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
 import java.util.regex.Pattern;
 
+@Component
 public class CpfValidator {
 
     private static final Pattern CPF_COM_MASCARA =

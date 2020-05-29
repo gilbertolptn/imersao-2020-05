@@ -29,6 +29,7 @@ class ClienteServiceTest {
 
     @Test
     void deveriaListarUsandoORepository(){
+
         //Preparação
         List<Cliente> listaClientes = Arrays.asList(new Cliente("Gilberto", "911.948.160-88"));
         Mockito.when(clientRepositoryMock.listarClientes()).thenReturn(listaClientes);
