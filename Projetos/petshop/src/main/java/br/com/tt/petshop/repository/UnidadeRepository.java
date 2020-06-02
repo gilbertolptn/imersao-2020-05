@@ -4,8 +4,6 @@ import br.com.tt.petshop.dto.UnidadeDto;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
 @Repository
@@ -21,7 +19,7 @@ public class UnidadeRepository {
 
         return jdbcTemplate
                 //.queryForList("select nome from unidade", String.class);
-                .query("select id,nome,endereco from unidade",
+                .query("select id,nome,endereco from UNIDADE",
                         (rs, rowNum) -> new UnidadeDto(
                                             rs.getInt("id"),
                                             rs.getString("nome"),
@@ -45,7 +43,7 @@ public class UnidadeRepository {
 
         return jdbcTemplate
                 //.queryForList("select nome from unidade", String.class);
-                .queryForObject("select id,nome,endereco from unidade where id = ?",
+                .queryForObject("select id,nome,endereco from UNIDADE where id = ?",
                         new Object[]{idUnidade},
                         (rs, rowNum) -> new UnidadeDto(
                                 rs.getInt("id"),
@@ -53,6 +51,10 @@ public class UnidadeRepository {
                                 rs.getString("endereco")));
     }
 
+    public void salvar(UnidadeDto unidade) {
+        jdbcTemplate.update("update UNIDADE set nome = ?, endereco = ? where id = ?",
+                unidade.getNome(), unidade.getEndereco(), unidade.getId());
+    }
 
 //    .query("select id,nome,endereco from unidade", this::converteResultSetEmUnidadeDto);
 //    private UnidadeDto converteResultSetEmUnidadeDto(ResultSet rs, int rowNum) throws SQLException {

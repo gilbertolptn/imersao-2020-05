@@ -34,4 +34,8 @@ public class ClienteService {
         }
         clienteRepository.criarCliente(cliente);
     }
+
+    public Cliente buscarPorId(Integer id) {
+        return clienteRepository.buscarPorId(id);
+    }
 }

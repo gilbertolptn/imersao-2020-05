@@ -6,8 +6,7 @@ import javax.persistence.*;
 @Table(name = "TB_CLIENTE")
 public class Cliente {
 
-    public Cliente() {
-    }
+    Cliente() {}//Construtor default para o Hibernate funcionar!!
 
     public Cliente(String nome, String cpf) {
         this.nome = nome;

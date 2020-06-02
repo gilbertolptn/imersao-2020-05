@@ -1,8 +1,3 @@
-CREATE TABLE unidade (
-	id serial NOT NULL,
-	nome varchar(100) NOT NULL,
-	endereco varchar(150) NOT NULL
-);
 
 INSERT INTO unidade (nome,endereco) VALUES
 ('Zona Norte','Rua Assis Brasil, 998')
