@@ -28,7 +28,12 @@ public class ClienteRepository {
 
     //@Transactional // Liga uma transação
     //@Modifying   // Somente no Spring data - notificação que aqui ocorre alteração de objetos!!
-    public void criarCliente(Cliente cliente){
+    public Cliente criarCliente(Cliente cliente){
         em.persist(cliente);
+        return cliente;
+    }
+
+    public Cliente atualizar(Cliente cliente){
+        return em.merge(cliente);
     }
 }
