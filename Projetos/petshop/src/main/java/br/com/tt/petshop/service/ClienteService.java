@@ -38,4 +38,11 @@ public class ClienteService {
     public Cliente buscarPorId(Integer id) {
         return clienteRepository.buscarPorId(id);
     }
+
+    @Transactional
+    public Cliente atualizar(Integer idCliente, Cliente dadosCliente){
+        Cliente clienteDaBase = clienteRepository.buscarPorId(idCliente);
+        clienteDaBase.atualizarDadosCliente(dadosCliente);
+        return clienteRepository.atualizar(clienteDaBase);
+    }
 }

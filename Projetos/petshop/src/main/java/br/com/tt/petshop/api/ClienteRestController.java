@@ -3,9 +3,8 @@ package br.com.tt.petshop.api;
 import br.com.tt.petshop.model.Cliente;
 import br.com.tt.petshop.service.ClienteService;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,4 +27,11 @@ public class ClienteRestController {
         return clienteService.buscarPorId(id);
     }
 
+    //Put /clientes/{id} -> body json (campos do objeto a ser atualizado!)
+    @PutMapping("/clientes/{idCliente}")
+    public ResponseEntity atualizar(@PathVariable("idCliente") Integer idCliente,
+                                    @RequestBody Cliente cliente){
+        clienteService.atualizar(idCliente, cliente);
+        return ResponseEntity.noContent().build();
+    }
 }

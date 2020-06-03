@@ -33,6 +33,6 @@ public class UnidadeService {
     public void atualizar(Long id, UnidadeDto unidadeDeEntrada) {
         UnidadeDto unidadeSalva = this.buscarPorId(id);
         unidadeSalva.atualizarInformacoes(unidadeDeEntrada);
-        unidadeRepository.salvar(unidadeSalva);
+        unidadeRepository.salvar(unidadeDeEntrada);
     }
 }

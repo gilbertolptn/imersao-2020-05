@@ -1,13 +1,18 @@
 package br.com.tt.petshop.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "TB_CLIENTE")
 public class Cliente {
 
-    Cliente() {}//Construtor default para o Hibernate funcionar!!
+    //Construtor default para o Hibernate funcionar!!
+    Cliente() {
+    }
 
+    @JsonCreator//Mandar o Jackson criar essa classe usando este construtor!
     public Cliente(String nome, String cpf) {
         this.nome = nome;
         this.cpf = cpf;
@@ -33,5 +38,10 @@ public class Cliente {
 
     public String getCpf() {
         return cpf;
+    }
+
+    public void atualizarDadosCliente(Cliente dadosCliente) {
+        this.nome = dadosCliente.nome;
+        this.cpf = dadosCliente.cpf;
     }
 }
