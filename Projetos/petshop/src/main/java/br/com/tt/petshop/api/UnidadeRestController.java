@@ -38,4 +38,12 @@ public class UnidadeRestController {
         return ResponseEntity.noContent().build();
     }
 
+    //Remover  - DELETE /unidades/{identificador} -> NoContent (204)
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity remover(@PathVariable("id") Long id){
+        unidadeService.remover(id); //Ação de remover??
+        return ResponseEntity.noContent().build();
+    }
+
 }
