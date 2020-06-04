@@ -46,4 +46,17 @@ public class ClienteService {
         clienteDaBase.atualizarDadosCliente(clienteAtualizacaoDto);
         return clienteRepository.atualizar(clienteDaBase);
     }
+
+    @Transactional
+    public void remover(Integer id){
+        Cliente clienteASerRemovido = this.buscarPorId(id);
+        if(clienteASerRemovido != null){
+            clienteRepository.remover(clienteASerRemovido);
+        }
+    }
+
+    @Transactional
+    public void removerPorId(Integer id){
+        clienteRepository.removerPorId(id);
+    }
 }
