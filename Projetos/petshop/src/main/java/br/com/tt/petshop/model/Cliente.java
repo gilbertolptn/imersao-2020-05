@@ -1,6 +1,6 @@
 package br.com.tt.petshop.model;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
+import br.com.tt.petshop.dto.ClienteAtualizacaoDto;
 
 import javax.persistence.*;
 
@@ -12,7 +12,7 @@ public class Cliente {
     Cliente() {
     }
 
-    @JsonCreator//Mandar o Jackson criar essa classe usando este construtor!
+    //@JsonCreator//Mandar o Jackson criar essa classe usando este construtor!
     public Cliente(String nome, String cpf) {
         this.nome = nome;
         this.cpf = cpf;
@@ -40,8 +40,8 @@ public class Cliente {
         return cpf;
     }
 
-    public void atualizarDadosCliente(Cliente dadosCliente) {
-        this.nome = dadosCliente.nome;
-        this.cpf = dadosCliente.cpf;
+    public void atualizarDadosCliente(ClienteAtualizacaoDto dadosCliente) {
+        this.nome = dadosCliente.getNome();
+        this.cpf = dadosCliente.getCpf();
     }
 }

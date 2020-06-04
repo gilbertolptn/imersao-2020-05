@@ -1,5 +1,6 @@
 package br.com.tt.petshop.service;
 
+import br.com.tt.petshop.dto.ClienteAtualizacaoDto;
 import br.com.tt.petshop.exception.CpfInvalidoException;
 import br.com.tt.petshop.model.Cliente;
 import br.com.tt.petshop.repository.ClienteRepository;
@@ -40,9 +41,9 @@ public class ClienteService {
     }
 
     @Transactional
-    public Cliente atualizar(Integer idCliente, Cliente dadosCliente){
+    public Cliente atualizar(Integer idCliente, ClienteAtualizacaoDto clienteAtualizacaoDto){
         Cliente clienteDaBase = clienteRepository.buscarPorId(idCliente);
-        clienteDaBase.atualizarDadosCliente(dadosCliente);
+        clienteDaBase.atualizarDadosCliente(clienteAtualizacaoDto);
         return clienteRepository.atualizar(clienteDaBase);
     }
 }
