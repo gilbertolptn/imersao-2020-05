@@ -34,8 +34,8 @@ public class ClienteService {
             throw new CpfInvalidoException();
         }
 
-        Cliente cliente = new Cliente(clienteEntrada);
-        clienteRepository.criarCliente(cliente);
+        Cliente clienteEntidade = new Cliente(clienteEntrada);
+        clienteRepository.criarCliente(clienteEntidade);
     }
 
     public Cliente buscarPorId(Integer id) {
