@@ -1,11 +1,13 @@
 package br.com.tt.petshop.api;
 
+import br.com.tt.petshop.dto.UnidadeEntradaDto;
 import br.com.tt.petshop.dto.UnidadeDto;
 import br.com.tt.petshop.service.UnidadeService;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController //@Controller + @ResponseBody
@@ -17,6 +19,13 @@ public class UnidadeRestController {
 
     public UnidadeRestController(UnidadeService unidadeService) {
         this.unidadeService = unidadeService;
+    }
+
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity criar(@RequestBody UnidadeEntradaDto dto){
+        unidadeService.criarUnidade(dto);
+        URI location = URI.create("/unidades/");//TODO trocar para o id gerado no banco
+        return ResponseEntity.created(location).build();
     }
 
     //@RequestMapping(method = RequestMethod.GET, value = "/unidades", produces = "application/json")

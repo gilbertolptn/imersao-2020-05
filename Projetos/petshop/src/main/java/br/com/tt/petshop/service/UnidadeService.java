@@ -1,5 +1,6 @@
 package br.com.tt.petshop.service;
 
+import br.com.tt.petshop.dto.UnidadeEntradaDto;
 import br.com.tt.petshop.dto.UnidadeDto;
 import br.com.tt.petshop.repository.UnidadeRepository;
 import org.springframework.stereotype.Service;
@@ -23,7 +24,7 @@ public class UnidadeService {
         return unidadeRepository.listarUnidades();
     }
 
-    public void criarUnidade(UnidadeDto unidadeDto){
+    public void criarUnidade(UnidadeEntradaDto unidadeDto){
         unidadeRepository.criarUnidade(unidadeDto);
     }
 

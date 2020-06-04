@@ -1,6 +1,6 @@
 package br.com.tt.petshop.service;
 
-import br.com.tt.petshop.dto.ClienteAtualizacaoDto;
+import br.com.tt.petshop.dto.ClienteEntradaDto;
 import br.com.tt.petshop.exception.CpfInvalidoException;
 import br.com.tt.petshop.model.Cliente;
 import br.com.tt.petshop.repository.ClienteRepository;
@@ -28,11 +28,13 @@ public class ClienteService {
 
     @Transactional//Deixa tudo abaixo de uma transação, ou seja, propricia ROLLBACK!
     //Poderia estar no Repository também, mas é mais comum no Service.
-    public void criarCliente(Cliente cliente) {
+    public void criarCliente(ClienteEntradaDto clienteEntrada) {
 
-        if( ! cpfValidator.verificaSeCpfValido(cliente.getCpf())){
+        if( ! cpfValidator.verificaSeCpfValido(clienteEntrada.getCpf())){
             throw new CpfInvalidoException();
         }
+
+        Cliente cliente = new Cliente(clienteEntrada);
         clienteRepository.criarCliente(cliente);
     }
 
@@ -41,9 +43,9 @@ public class ClienteService {
     }
 
     @Transactional
-    public Cliente atualizar(Integer idCliente, ClienteAtualizacaoDto clienteAtualizacaoDto){
+    public Cliente atualizar(Integer idCliente, ClienteEntradaDto clienteEntradaDto){
         Cliente clienteDaBase = clienteRepository.buscarPorId(idCliente);
-        clienteDaBase.atualizarDadosCliente(clienteAtualizacaoDto);
+        clienteDaBase.atualizarDadosCliente(clienteEntradaDto);
         return clienteRepository.atualizar(clienteDaBase);
     }
 

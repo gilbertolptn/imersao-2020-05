@@ -1,6 +1,6 @@
 package br.com.tt.petshop.api;
 
-import br.com.tt.petshop.dto.ClienteAtualizacaoDto;
+import br.com.tt.petshop.dto.ClienteEntradaDto;
 import br.com.tt.petshop.model.Cliente;
 import br.com.tt.petshop.service.ClienteService;
 import org.springframework.http.MediaType;
@@ -31,8 +31,8 @@ public class ClienteRestController {
     //Put /clientes/{id} -> body json (campos do objeto a ser atualizado!)
     @PutMapping("/clientes/{idCliente}")
     public ResponseEntity atualizar(@PathVariable("idCliente") Integer idCliente,
-                                    @RequestBody ClienteAtualizacaoDto clienteAtualizacaoDto){
-        clienteService.atualizar(idCliente, clienteAtualizacaoDto);
+                                    @RequestBody ClienteEntradaDto clienteEntradaDto){
+        clienteService.atualizar(idCliente, clienteEntradaDto);
         return ResponseEntity.noContent().build();
     }
 
@@ -41,5 +41,7 @@ public class ClienteRestController {
         clienteService.removerPorId(id);
         return ResponseEntity.noContent().build();
     }
+
+    //Criação - Create - POST
 
 }
