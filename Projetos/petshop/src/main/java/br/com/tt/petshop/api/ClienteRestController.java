@@ -35,4 +35,11 @@ public class ClienteRestController {
         clienteService.atualizar(idCliente, clienteAtualizacaoDto);
         return ResponseEntity.noContent().build();
     }
+
+    @DeleteMapping("/clientes/{id}")
+    public ResponseEntity remover(@PathVariable("id") Integer id){
+        clienteService.removerPorId(id);
+        return ResponseEntity.noContent().build();
+    }
+
 }
