@@ -36,12 +36,16 @@ public class Cliente {
         this.cpf = dadosCliente.getCpf();
     }
 
-    public String getDescricao(){
-        return String.format("%s (%s)",this.nome, this.cpf);
+    public Integer getId() {
+        return id;
     }
 
     public String getCpf() {
         return cpf;
+    }
+
+    public String getNome() {
+        return nome;
     }
 
     @Override

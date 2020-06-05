@@ -1,13 +1,17 @@
 package br.com.tt.petshop.api;
 
 import br.com.tt.petshop.dto.ClienteEntradaDto;
+import br.com.tt.petshop.dto.ClienteSaidaDto;
 import br.com.tt.petshop.model.Cliente;
 import br.com.tt.petshop.service.ClienteService;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.util.List;
+
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
 public class ClienteRestController {
@@ -18,10 +22,22 @@ public class ClienteRestController {
         this.clienteService = clienteService;
     }
 
-    @GetMapping(value = "/clientes", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Cliente> lista(){
+    @PostMapping(value = "/clientes", consumes = APPLICATION_JSON_VALUE)
+    public ResponseEntity criar(@RequestBody ClienteEntradaDto dto){
+        Cliente clienteCriado = clienteService.criarCliente(dto);
+        String location = String.format("/clientes/%d", clienteCriado.getId());
+
+        return ResponseEntity
+                .created(URI.create(location))
+                .build();
+    }
+
+    @GetMapping(value = "/clientes", produces = APPLICATION_JSON_VALUE)
+    public List<ClienteSaidaDto> lista(){
         return clienteService.listarClientes();
     }
+
+
 
     @GetMapping(value = "/clientes/{clienteId}", produces = "application/json")
     public Cliente buscarPorId(@PathVariable("clienteId") Integer id){
@@ -42,6 +58,6 @@ public class ClienteRestController {
         return ResponseEntity.noContent().build();
     }
 
-    //Criação - Create - POST
+
 
 }
