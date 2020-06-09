@@ -4,6 +4,7 @@ import br.com.tt.petshop.dto.ClienteEntradaDto;
 import br.com.tt.petshop.dto.ClienteSaidaDto;
 import br.com.tt.petshop.dto.MensagemErroDto;
 import br.com.tt.petshop.exception.CpfInvalidoException;
+import br.com.tt.petshop.exception.ErroNegocioException;
 import br.com.tt.petshop.model.Cliente;
 import br.com.tt.petshop.service.ClienteService;
 import org.springframework.http.MediaType;
@@ -70,14 +71,8 @@ public class ClienteRestController {
      * Forma mais simples de tratar uma exceção no Spring MVC!
      */
     @ExceptionHandler(CpfInvalidoException.class)
-    public ResponseEntity<MensagemErroDto>
-                trataCpfInvalido(CpfInvalidoException e){
-
-        MensagemErroDto mensagemErro = new MensagemErroDto(
-                "cpf_invalido",
-                e.getMessage());
-
+    public ResponseEntity<MensagemErroDto> trataCpfInvalido(CpfInvalidoException e) {
+        MensagemErroDto mensagemErro = new MensagemErroDto("cpf_invalido", e.getMessage());
         return ResponseEntity.badRequest().body(mensagemErro);
     }
-
 }
