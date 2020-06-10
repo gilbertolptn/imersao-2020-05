@@ -3,6 +3,7 @@ package br.com.tt.petshop.model;
 import br.com.tt.petshop.dto.ClienteEntradaDto;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -22,6 +23,9 @@ public class Cliente {
 
     @Column(name = "nro_cpf", columnDefinition = "VARCHAR(14)", nullable = false)
     private String cpf;
+
+    @OneToMany(mappedBy = "cliente")
+    private List<Animal> animais;
 
     //Construtor default para o Hibernate funcionar!!
     Cliente() {
