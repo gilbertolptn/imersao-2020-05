@@ -29,4 +29,7 @@ public class Animal {
     @JoinColumn(name = "ID_CLIENTE")
     @ManyToOne
     private Cliente cliente;
+
+    Animal(){
+    }
 }

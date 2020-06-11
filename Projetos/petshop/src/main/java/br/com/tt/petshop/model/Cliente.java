@@ -15,6 +15,7 @@ public class Cliente {
     //@GeneratedValue(strategy = GenerationType.TABLE)//Tabela do Hibernate no Banco para controle
     //@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "minhaSeq")//BDs com SEQUENCE a parte
     //@SequenceGenerator(name = "minhaSeq", sequenceName = "MEUDB_RUN.seq_cliente")
+    @Column(name = "ID")
     private Integer id;
 
     @Column(name = "txt_nome")
