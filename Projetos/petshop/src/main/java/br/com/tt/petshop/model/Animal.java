@@ -1,5 +1,6 @@
 package br.com.tt.petshop.model;
 
+import br.com.tt.petshop.dto.AnimalEntradaDto;
 import br.com.tt.petshop.enumeration.TipoAnimal;
 
 import javax.persistence.*;
@@ -35,5 +36,16 @@ public class Animal {
     private Cliente cliente;
 
     Animal(){
+    }
+
+    public Animal(AnimalEntradaDto animalDto, Cliente cliente){
+        this.nome = animalDto.getNome();
+        this.dataNascimento = animalDto.getDataNascimento();
+        this.tipo = animalDto.getTipo();
+        this.cliente = cliente;
+    }
+
+    public Long getId() {
+        return id;
     }
 }

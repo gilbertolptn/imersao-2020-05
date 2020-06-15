@@ -1,6 +1,8 @@
 package br.com.tt.petshop.service;
 
+import br.com.tt.petshop.dto.AnimalEntradaDto;
 import br.com.tt.petshop.model.Animal;
+import br.com.tt.petshop.model.Cliente;
 import br.com.tt.petshop.repository.AnimalRepository;
 import org.springframework.stereotype.Service;
 
@@ -13,10 +15,12 @@ public class AnimalService {
     //Você pode injetar tanto classes quanto interfaces
     // (desde que as interfaces tenham uma implementação)
     // Neste caso o Spring irá criar essa implementação EM RUNTIME.
-    private AnimalRepository animalRepository;
+    private final AnimalRepository animalRepository;
+    private final ClienteService clienteService;
 
-    public AnimalService(AnimalRepository animalRepository) {
+    public AnimalService(AnimalRepository animalRepository, ClienteService clienteService) {
         this.animalRepository = animalRepository;
+        this.clienteService = clienteService;
     }
 
     public void removerAnimal(Long idAnimal){
@@ -29,7 +33,10 @@ public class AnimalService {
                 () -> {throw new RuntimeException("Animal não existe");});
     }
 
-    public Animal criarAnimal(Animal animal){
+    public Animal criarAnimal(AnimalEntradaDto animalDto, Integer idCliente){
+        Cliente clienteDonoDoAnimal = clienteService.buscarPorId(idCliente);
+
+        Animal animal = new Animal(animalDto, clienteDonoDoAnimal);
         return animalRepository.save(animal);
     }
 
