@@ -26,6 +26,10 @@ public class Animal {
     @Enumerated(EnumType.STRING)
     private TipoAnimal tipo;
 
+    //Propriedade
+    //@Column(name = "ID_CLIENTE")
+    //private Long idCliente;
+
     @JoinColumn(name = "ID_CLIENTE")
     @ManyToOne
     private Cliente cliente;

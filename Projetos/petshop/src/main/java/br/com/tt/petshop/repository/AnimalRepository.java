@@ -3,7 +3,9 @@ package br.com.tt.petshop.repository;
 import br.com.tt.petshop.model.Animal;
 import br.com.tt.petshop.model.Cliente;
 import ch.qos.logback.core.net.server.Client;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
@@ -27,5 +29,17 @@ public interface AnimalRepository extends
                                                     LocalDate dataNascimentoInicio,
                                                     LocalDate dataNascimentoFim);
 
+    //Query Methods
     Optional<Animal> findByNomeAndCliente(String nome, Cliente cliente);
+
+    //Query JPQL
+    @Query("select a from Animal a where a.dataNascimento = :dataNascimento")
+    List<Animal> buscarPorDataDeNascimento(@Param("dataNascimento") LocalDate dataNascimento);
+
+    @Query("select a from Animal a join a.cliente c where c.cpf = :cpf ")
+    List<Animal> buscaAnimaisDoClientePorCpf(@Param("cpf") String cpf);
+
+    //Native query?
+    @Query(value = "select A.NOME FROM TB_ANIMAL A order limit 1 by A.ID desc", nativeQuery = true)
+    String buscarUltimoNomeAnimalCadastrado();
 }
