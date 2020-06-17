@@ -48,4 +48,16 @@ public class Animal {
     public Long getId() {
         return id;
     }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public LocalDate getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public TipoAnimal getTipo() {
+        return tipo;
+    }
 }
