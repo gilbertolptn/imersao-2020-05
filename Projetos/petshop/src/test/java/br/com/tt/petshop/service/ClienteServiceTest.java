@@ -10,7 +10,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -26,7 +25,7 @@ class ClienteServiceTest {
     void inicializacao(){
         clientRepositoryMock = Mockito.mock(ClienteRepository.class);
         cpfValidatorMock = Mockito.mock(CpfValidator.class);
-        clienteService = new ClienteService(clientRepositoryMock, cpfValidatorMock);
+        clienteService = new ClienteService(clientRepositoryMock, cpfValidatorMock, creditoClient);
     }
 
     @Test
