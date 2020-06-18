@@ -95,7 +95,7 @@ public class ClienteService {
 //        return true;
 
         return Stream.of(nome.split(SEPARADOR))
-                .allMatch(parte -> parte.length() > 2);
+                .allMatch(parte -> parte.length() >= 2);
     }
 
     /*
