@@ -49,9 +49,7 @@ public class ClienteService {
     //Poderia estar no Repository também, mas é mais comum no Service.
     public Cliente criarCliente(ClienteEntradaDto clienteEntrada) {
 
-        if(!cpfValidator.verificaSeCpfValido(clienteEntrada.getCpf())){
-            throw new CpfInvalidoException("O formato do CPF está incorreto!");
-        }
+        verificaSeCPfEhValido(clienteEntrada);
 
         if(!verificaSeNomePossuiQuantidadePartes(clienteEntrada.getNome())){
             throw new ErroNegocioException("nome_invalido", "Informe seu nome completo!");
@@ -94,9 +92,18 @@ public class ClienteService {
 
     @Transactional
     public Cliente atualizar(Integer idCliente, ClienteEntradaDto clienteEntradaDto){
+
+        verificaSeCPfEhValido(clienteEntradaDto);
+
         Cliente clienteDaBase = clienteRepository.buscarPorId(idCliente);
         clienteDaBase.atualizarDadosCliente(clienteEntradaDto);
         return clienteRepository.atualizar(clienteDaBase);
+    }
+
+    private void verificaSeCPfEhValido(ClienteEntradaDto clienteEntradaDto) {
+        if (!cpfValidator.verificaSeCpfValido(clienteEntradaDto.getCpf())) {
+            throw new CpfInvalidoException("O formato do CPF está incorreto!");
+        }
     }
 
     @Transactional

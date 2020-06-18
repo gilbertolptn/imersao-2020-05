@@ -1,6 +1,7 @@
 package br.com.tt.petshop.servicecommock;
 
 import br.com.tt.petshop.dto.ClienteEntradaDto;
+import br.com.tt.petshop.dto.ClienteSaidaDto;
 import br.com.tt.petshop.exception.CpfInvalidoException;
 import br.com.tt.petshop.model.Cliente;
 import br.com.tt.petshop.repository.ClienteRepository;
@@ -22,7 +23,7 @@ class ClienteServiceTest {
         CpfValidator cpfValidator = new CpfValidator();
 
         //Act
-        List<Cliente> clientes = new ClienteService(clientRepositoryMock, cpfValidator).listarClientes();
+        List<ClienteSaidaDto> clientes = new ClienteService(clientRepositoryMock, cpfValidator).listarClientes();
 
         //Verificação
         assertNotNull(clientes);

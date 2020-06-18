@@ -44,7 +44,7 @@ public class UnidadeRestController {
 
     @PutMapping("/{id}")
     public ResponseEntity atualizarTodo(@PathVariable("id") Long id,
-                                    @RequestBody UnidadeDto unidadeASerAtualizada){
+                                    @RequestBody UnidadeEntradaDto unidadeASerAtualizada){
         unidadeService.atualizar(id, unidadeASerAtualizada);
 
         return ResponseEntity.noContent().build();

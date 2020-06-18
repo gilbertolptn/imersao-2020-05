@@ -1,6 +1,7 @@
 package br.com.tt.petshop.service;
 
 import br.com.tt.petshop.dto.ClienteEntradaDto;
+import br.com.tt.petshop.dto.ClienteSaidaDto;
 import br.com.tt.petshop.exception.CpfInvalidoException;
 import br.com.tt.petshop.model.Cliente;
 import br.com.tt.petshop.repository.ClienteRepository;
@@ -36,12 +37,12 @@ class ClienteServiceTest {
         Mockito.when(clientRepositoryMock.listarClientes()).thenReturn(List.of(new Cliente(dto)));
 
         //Act
-        List<Cliente> clientes = clienteService.listarClientes();
+        List<ClienteSaidaDto> clientes = clienteService.listarClientes();
 
         //Verificação
         assertNotNull(clientes);
 
-        Cliente clienteGilberto = clientes.get(0);
+        ClienteSaidaDto clienteGilberto = clientes.get(0);
         assertEquals("911.948.160-88", clienteGilberto.getCpf());
         assertEquals("Gilberto (911.948.160-88)", clienteGilberto.getDescricao());
         Mockito.verify(clientRepositoryMock).listarClientes();

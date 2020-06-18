@@ -1,8 +1,12 @@
 package br.com.tt.petshop.dto;
 
+import org.hibernate.validator.constraints.br.CPF;
+
 public class ClienteEntradaDto {
 
     private String nome;
+
+    @CPF
     private String cpf;
 
     public ClienteEntradaDto(String nome, String cpf) {
