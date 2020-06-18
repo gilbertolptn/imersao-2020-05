@@ -1,5 +1,6 @@
 package br.com.tt.petshop.client;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -17,8 +18,21 @@ public class CreditoRestTemplateClient {
     /*
        Retorno esperado: {"situacao":"NEGATIVADO","pontos":-679}
      */
-    public CreditoDto consultaSituacaoCpf(String cpf){
+    public CreditoDto consultaSituacaoCpf(String cpf) {
         String url = String.format("%s/credito/%s", URL_SERVICO_CREDITO, cpf);
         return restTemplate.getForObject(url, CreditoDto.class);
+
+        //ResponseEntity<CreditoDto> retorno = restTemplate.getForEntity(url, CreditoDto.class);
+        //String headerToken = retorno.getHeaders().getFirst("Authorization");
+        //return retorno.getBody();
     }
 }
+
+
+
+
+
+
+
+
+
