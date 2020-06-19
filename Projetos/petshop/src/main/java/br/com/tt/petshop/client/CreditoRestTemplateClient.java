@@ -1,25 +1,26 @@
 package br.com.tt.petshop.client;
 
-import org.springframework.http.ResponseEntity;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 @Component// ou @Service
 public class CreditoRestTemplateClient {
 
-    private final String URL_SERVICO_CREDITO = "https://imersao-credito-api.herokuapp.com";
-
     private final RestTemplate restTemplate;
+    private final String creditoUrl;
 
-    public CreditoRestTemplateClient(RestTemplate restTemplate) {
+    public CreditoRestTemplateClient(RestTemplate restTemplate,
+                                     @Value("${app.servicos.credito.url}") String creditoUrl) {
         this.restTemplate = restTemplate;
+        this.creditoUrl = creditoUrl;
     }
 
     /*
        Retorno esperado: {"situacao":"NEGATIVADO","pontos":-679}
      */
     public CreditoDto consultaSituacaoCpf(String cpf) {
-        String url = String.format("%s/credito/%s", URL_SERVICO_CREDITO, cpf);
+        String url = String.format("%s/credito/%s", creditoUrl, cpf);
         return restTemplate.getForObject(url, CreditoDto.class);
 
         //ResponseEntity<CreditoDto> retorno = restTemplate.getForEntity(url, CreditoDto.class);
