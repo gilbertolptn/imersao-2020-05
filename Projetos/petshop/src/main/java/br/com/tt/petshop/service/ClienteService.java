@@ -1,6 +1,7 @@
 package br.com.tt.petshop.service;
 
 import br.com.tt.petshop.client.CreditoDto;
+import br.com.tt.petshop.client.CreditoFeignClient;
 import br.com.tt.petshop.client.CreditoRestTemplateClient;
 import br.com.tt.petshop.dto.ClienteEntradaDto;
 import br.com.tt.petshop.dto.ClienteSaidaDto;
@@ -28,10 +29,10 @@ public class ClienteService {
 
     private final ClienteRepository clienteRepository;
     private final CpfValidator cpfValidator;
-    private final CreditoRestTemplateClient creditoClient;
+    private final CreditoFeignClient creditoClient;
 
     public ClienteService(ClienteRepository clienteRepository,
-                          CpfValidator cpfValidator, CreditoRestTemplateClient creditoClient) {
+                          CpfValidator cpfValidator, CreditoFeignClient creditoClient) {
         this.clienteRepository = clienteRepository;
         this.cpfValidator = cpfValidator;
         this.creditoClient = creditoClient;
