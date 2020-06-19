@@ -20,12 +20,11 @@ public class CreditoRestTemplateClient {
        Retorno esperado: {"situacao":"NEGATIVADO","pontos":-679}
      */
     public CreditoDto consultaSituacaoCpf(String cpf) {
-        String url = String.format("%s/credito/%s", creditoUrl, cpf);
-        return restTemplate.getForObject(url, CreditoDto.class);
-
         //ResponseEntity<CreditoDto> retorno = restTemplate.getForEntity(url, CreditoDto.class);
         //String headerToken = retorno.getHeaders().getFirst("Authorization");
         //return retorno.getBody();
+
+        return restTemplate.getForObject(creditoUrl, CreditoDto.class, cpf);
     }
 }
 
