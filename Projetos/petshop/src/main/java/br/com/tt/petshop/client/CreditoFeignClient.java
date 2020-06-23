@@ -4,7 +4,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-@FeignClient(name= "credito", url="${app.servicos.credito.host}")
+@FeignClient(name= "credito-api", url="${app.servicos.credito.host}")
 public interface CreditoFeignClient {
 
     @GetMapping("/credito/{cpf}")

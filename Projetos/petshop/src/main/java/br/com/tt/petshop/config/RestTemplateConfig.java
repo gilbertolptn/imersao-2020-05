@@ -8,20 +8,21 @@ import org.springframework.web.client.RestTemplate;
 @Configuration
 public class RestTemplateConfig {
 
-    //O RestTemplateBuilder já é um SpringBean!!!!!
-    private final RestTemplateBuilder builder;
-
-    public RestTemplateConfig(RestTemplateBuilder builder) {
-        this.builder = builder;
-    }
-
     @Bean
     public RestTemplate criaRestTemplate(){
-        return builder.build();
+        return new RestTemplateBuilder().build();
     }
 
+//    //O RestTemplateBuilder já é um SpringBean!!!!!
+//    private final RestTemplateBuilder builder;
+//
+//    public RestTemplateConfig(RestTemplateBuilder builder) {
+//        this.builder = builder;
+//    }
+//
 //    @Bean
 //    public RestTemplate criaRestTemplate(){
-//        return new RestTemplateBuilder().build();
+//        return builder.build();
 //    }
+
 }
