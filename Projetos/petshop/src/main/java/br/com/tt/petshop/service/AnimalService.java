@@ -77,4 +77,10 @@ public class AnimalService {
 //
 //        return animaisDto;
     }
+
+    public Animal buscarPorId(Long idAnimal) {
+        return animalRepository
+                .findById(idAnimal)
+                .orElseThrow(() -> new ErroNegocioException("animal_inexistente", "Animal inexistente!"));
+    }
 }

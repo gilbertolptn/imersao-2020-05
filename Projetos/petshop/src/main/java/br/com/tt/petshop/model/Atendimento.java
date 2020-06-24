@@ -17,6 +17,19 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Table(name = "TB_ATENDIMENTO")
 public class Atendimento {
 
+    Atendimento(){
+    }
+
+    public Atendimento(Long id, LocalDateTime dataHora, TipoServico tipoServico, String descricaoServico, String funcionario, BigDecimal valorTotal, Animal animal) {
+        this.id = id;
+        this.dataHora = dataHora;
+        this.tipoServico = tipoServico;
+        this.descricaoServico = descricaoServico;
+        this.funcionario = funcionario;
+        this.valorTotal = valorTotal;
+        this.animal = animal;
+    }
+
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "id")
