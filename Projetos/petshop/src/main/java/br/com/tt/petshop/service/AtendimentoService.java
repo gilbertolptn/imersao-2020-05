@@ -48,10 +48,26 @@ public class AtendimentoService {
         return repository.findAll()
         //Converter para dto
         .stream()
-        .map(entidade -> new AtendimentoSaidaDto(entidade))
-//        .map(atendimento -> mapper.map(atendimento, AtendimentoSaidaDto.class))
+        //.map(entidade -> new AtendimentoSaidaDto(entidade))
+        .map(atendimento -> mapper.map(atendimento, AtendimentoSaidaDto.class))
         //Retornar uma lista
         .collect(Collectors.toList());
     }
+
+    //Como o modelMapper funciona?
+    //    ClasseMegeada minhaVariavelDeMerge;
+    //
+    //    ClasseA minhaVariavelA = new ClasseA();
+    //                minhaVariavelA.setNome("adasdsa");
+    //
+    //    ClasseB minhaVariabelB = mapper.map(minhaVariavelA, minhaVariavelDeMerge, ClasseB.class);
+    //                minhaVariabelB.getNome()
+    //
+    //                        mapper.map(minhaVariavelDeMerge, minhaVariavelA); nome ="Joao"
+    //            mapper.map(minhaVariavelDeMerge, minhaVariavelB); data = 2020-10-01
+    //            mapper.map(minhaVariavelDeMerge, minhaVariavelC);
+    //        mapper.map(minhaVariavelDeMerge, minhaVariavelD);
+    //    minhaVariavelDeMerge nome = Joao, data = 2020-10-01
+
 
 }

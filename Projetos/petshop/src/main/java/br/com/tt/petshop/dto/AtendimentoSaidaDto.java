@@ -16,15 +16,15 @@ public class AtendimentoSaidaDto {
     private BigDecimal valorTotal;
     private AnimalSaidaDto animal;
 
-    public AtendimentoSaidaDto(Atendimento atendimento) {
-        id = atendimento.getId();
-        dataHora = atendimento.getDataHora();
-        tipoServico = atendimento.getTipoServico();
-        descricaoServico = atendimento.getDescricaoServico();
-        funcionario = atendimento.getFuncionario();
-        valorTotal = atendimento.getValorTotal();
-        animal = AnimalSaidaDto.build(atendimento.getAnimal());
-    }
+//    public AtendimentoSaidaDto(Atendimento atendimento) {
+//        id = atendimento.getId();
+//        dataHora = atendimento.getDataHora();
+//        tipoServico = atendimento.getTipoServico();
+//        descricaoServico = atendimento.getDescricaoServico();
+//        funcionario = atendimento.getFuncionario();
+//        valorTotal = atendimento.getValorTotal();
+//        animal = AnimalSaidaDto.build(atendimento.getAnimal());
+//    }
 
     public Long getId() {
         return id;
@@ -52,5 +52,33 @@ public class AtendimentoSaidaDto {
 
     public AnimalSaidaDto getAnimal() {
         return animal;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setDataHora(LocalDateTime dataHora) {
+        this.dataHora = dataHora;
+    }
+
+    public void setTipoServico(TipoServico tipoServico) {
+        this.tipoServico = tipoServico;
+    }
+
+    public void setDescricaoServico(String descricaoServico) {
+        this.descricaoServico = descricaoServico;
+    }
+
+    public void setFuncionario(String funcionario) {
+        this.funcionario = funcionario;
+    }
+
+    public void setValorTotal(BigDecimal valorTotal) {
+        this.valorTotal = valorTotal;
+    }
+
+    public void setAnimal(AnimalSaidaDto animal) {
+        this.animal = animal;
     }
 }

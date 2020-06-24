@@ -12,6 +12,9 @@ public class AnimalSaidaDto {
     private LocalDate dataNascimento;
     private TipoAnimal tipo;
 
+    public AnimalSaidaDto() {
+    }
+
     private AnimalSaidaDto(Animal animal) {
         id = animal.getId();
         nome = animal.getNome();
@@ -37,5 +40,21 @@ public class AnimalSaidaDto {
 
     public TipoAnimal getTipo() {
         return tipo;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setDataNascimento(LocalDate dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
+    public void setTipo(TipoAnimal tipo) {
+        this.tipo = tipo;
     }
 }
