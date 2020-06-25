@@ -12,6 +12,7 @@ import javax.validation.Valid;
 import java.net.URI;
 import java.text.MessageFormat;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/atendimento")
@@ -33,7 +34,8 @@ public class AtendimentoRestController {
     }
 
     @GetMapping
-    public List<AtendimentoSaidaDto> listar(){
-        return service.listar();
+    public List<AtendimentoSaidaDto> listar(@RequestParam("pagina") int pagina,
+                                            @RequestParam("tamanhoPagina") Optional<Integer> tamanhoPagina){
+        return service.listar(pagina, tamanhoPagina.orElse(5));
     }
 }

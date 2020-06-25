@@ -4,28 +4,24 @@ import br.com.tt.petshop.dto.AtendimentoEntradaDto;
 import br.com.tt.petshop.dto.AtendimentoSaidaDto;
 import br.com.tt.petshop.model.Animal;
 import br.com.tt.petshop.model.Atendimento;
-import br.com.tt.petshop.repository.AnimalRepository;
 import br.com.tt.petshop.repository.AtendimentoRepository;
-import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Service
 public class AtendimentoService {
 
     private final AnimalService animalService;
     private final AtendimentoRepository repository;
-    private final ModelMapper mapper;
 
     public AtendimentoService(AnimalService animalService,
-                              AtendimentoRepository repository,
-                              ModelMapper mapper) {
+                              AtendimentoRepository repository
+                              ) {
         this.animalService = animalService;
         this.repository = repository;
-        this.mapper = mapper;
     }
 
     public Atendimento criar(AtendimentoEntradaDto entradaDto) {
@@ -43,13 +39,15 @@ public class AtendimentoService {
         return atendimentoSalvo;
     }
 
-    public List<AtendimentoSaidaDto> listar() {
+    public List<AtendimentoSaidaDto> listar(int pagina, int tamanhoPagina) {
+
+        PageRequest paginacao = PageRequest.of(pagina, tamanhoPagina);
+
         //Buscar os atendimentos
-        return repository.findAll()
+        return repository.findAll(paginacao)
         //Converter para dto
         .stream()
         .map(entidade -> new AtendimentoSaidaDto(entidade))
-//        .map(atendimento -> mapper.map(atendimento, AtendimentoSaidaDto.class))
         //Retornar uma lista
         .collect(Collectors.toList());
     }
