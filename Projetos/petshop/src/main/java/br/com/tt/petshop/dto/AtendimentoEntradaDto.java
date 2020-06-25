@@ -64,7 +64,12 @@ public class AtendimentoEntradaDto {
     }
 
     public Atendimento toEntity(Animal animal) {
-        return new Atendimento(null, LocalDateTime.now(), tipoServico, descricaoServico,
-                                funcionario, valorTotal, animal);
+        return new Atendimento(null,
+                LocalDateTime.now(),
+                tipoServico,
+                descricaoServico,
+                funcionario,
+                valorTotal,
+                animal);
     }
 }

@@ -17,13 +17,6 @@ public class AnimalEntradaDto {
     @NotNull(message = "Informe um dos tipos: MAMIFERO, REPTIL ou PEIXE")
     private TipoAnimal tipo;
 
-    public AnimalEntradaDto(String nome,
-                            LocalDate dataNascimento,
-                            TipoAnimal tipo) {
-        this.nome = nome;
-        this.dataNascimento = dataNascimento;
-        this.tipo = tipo;
-    }
 
     public String getNome() {
         return nome;

@@ -20,7 +20,13 @@ public class Atendimento {
     Atendimento(){
     }
 
-    public Atendimento(Long id, LocalDateTime dataHora, TipoServico tipoServico, String descricaoServico, String funcionario, BigDecimal valorTotal, Animal animal) {
+    public Atendimento(Long id,
+                       LocalDateTime dataHora,
+                       TipoServico tipoServico,
+                       String descricaoServico,
+                       String funcionario,
+                       BigDecimal valorTotal,
+                       Animal animal) {
         this.id = id;
         this.dataHora = dataHora;
         this.tipoServico = tipoServico;
