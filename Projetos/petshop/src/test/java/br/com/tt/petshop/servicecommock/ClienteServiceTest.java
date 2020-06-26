@@ -22,7 +22,7 @@ class ClienteServiceTest {
         CpfValidator cpfValidator = new CpfValidator();
 
         //Act
-        List<ClienteSaidaDto> clientes = new ClienteService(clientRepositoryMock, cpfValidator, creditoClient).listarClientes();
+        List<ClienteSaidaDto> clientes = new ClienteService(clientRepositoryMock, cpfValidator, null).listarClientes();
 
         //Verificação
         assertNotNull(clientes);
@@ -37,7 +37,7 @@ class ClienteServiceTest {
         CpfValidator cpfValidator = new CpfValidator();
 
         //Act
-        new ClienteService(clientRepositoryMock, cpfValidator, creditoClient).criarCliente(clienteASerSalvo);
+        new ClienteService(clientRepositoryMock, cpfValidator, null).criarCliente(clienteASerSalvo);
 
         //Verificação
         assertEquals(1, ((MockGilbertoClienteRepository) clientRepositoryMock)
@@ -54,7 +54,7 @@ class ClienteServiceTest {
 
         //Act
         assertThrows(CpfInvalidoException.class,
-                () -> new ClienteService(clientRepositoryMock, cpfValidator, creditoClient).criarCliente(clienteASerSalvo));
+                () -> new ClienteService(clientRepositoryMock, cpfValidator, null).criarCliente(clienteASerSalvo));
 
         //Verificação
         assertEquals(0, ((MockGilbertoClienteRepository) clientRepositoryMock)
