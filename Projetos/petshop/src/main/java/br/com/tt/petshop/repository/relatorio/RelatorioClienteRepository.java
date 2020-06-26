@@ -1,7 +1,7 @@
-package br.com.tt.petshop.repository;
+package br.com.tt.petshop.repository.relatorio;
 
 import br.com.tt.petshop.model.Cliente;
-import br.com.tt.petshop.model.projection.ClienteRelatorioProjection;
+import br.com.tt.petshop.model.projection.RelatorioClienteProjection;
 import br.com.tt.petshop.model.projection.ClienteSimplificadoProjection;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -16,8 +16,9 @@ public interface RelatorioClienteRepository
     @Query("select c.nome as nome, c.cpf as cpf, " +
             " count(a.id) as quantidade from Cliente c left join c.animais a" +
             " group by c.nome, c.cpf")
-    List<ClienteRelatorioProjection> listarRelatorioClientes();
+    List<RelatorioClienteProjection> listarClientes();
 
-    @Query("select c from Cliente c")
+    @Query("from Cliente")
+    //@Query("select c from Cliente c")
     List<ClienteSimplificadoProjection> listaSimplificada();
 }
