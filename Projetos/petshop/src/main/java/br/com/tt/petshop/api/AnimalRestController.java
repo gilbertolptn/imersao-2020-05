@@ -5,6 +5,7 @@ import br.com.tt.petshop.dto.AnimalSaidaDto;
 import br.com.tt.petshop.enumeration.TipoAnimal;
 import br.com.tt.petshop.model.Animal;
 import br.com.tt.petshop.service.AnimalService;
+import io.swagger.annotations.Api;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +17,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
 @RequestMapping("/clientes/{idCliente}/animais")
+@Api(tags = "animal")
 public class AnimalRestController {
 
     private final AnimalService animalService;

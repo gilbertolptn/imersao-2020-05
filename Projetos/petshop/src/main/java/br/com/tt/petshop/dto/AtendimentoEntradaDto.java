@@ -5,6 +5,8 @@ import br.com.tt.petshop.model.Animal;
 import br.com.tt.petshop.model.Atendimento;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -13,12 +15,14 @@ import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+@ApiModel("AtendimentoEntrada")
 public class AtendimentoEntradaDto {
 
     @NotNull
     private final TipoServico tipoServico;
 
     @NotBlank @Size(min = 5)
+    @ApiModelProperty("descricao")
     private final String descricaoServico;
 
     @NotBlank @Size(min = 3)

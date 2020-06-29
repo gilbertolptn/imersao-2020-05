@@ -5,6 +5,7 @@ import br.com.tt.petshop.dto.AtendimentoSaidaDto;
 import br.com.tt.petshop.model.Animal;
 import br.com.tt.petshop.model.Atendimento;
 import br.com.tt.petshop.service.AtendimentoService;
+import io.swagger.annotations.Api;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +17,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/atendimento")
+@Api(tags = "atendimento")
 public class AtendimentoRestController {
 
     private final AtendimentoService service;
