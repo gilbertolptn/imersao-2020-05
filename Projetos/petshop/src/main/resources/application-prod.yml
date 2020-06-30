@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://ec2-52-202-66-191.compute-1.amazonaws.com:5432/d5789alpb91f6i
-    username: ejavpeutvtrooo
-    password: invalida
+    url: ${JDBC_DATABASE_URL}
+    username: ${JDBC_DATABASE_USERNAME}
+    password: ${JDBC_DATABASE_PASSWORD}
     maximumPoolSize: 1
     hikari:
       connectionTimeout: 5000
