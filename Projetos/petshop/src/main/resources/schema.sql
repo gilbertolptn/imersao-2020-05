@@ -17,7 +17,7 @@ CREATE TABLE "tb_animal"(
     "data_nascimento" date,
     "nome" varchar(255),
     "tipo_animal" varchar(255),
-1    "id_cliente" integer
+   "id_cliente" integer
 );
 ALTER TABLE "tb_animal" ADD CONSTRAINT "pk_animal_id" PRIMARY KEY("id");
 
