@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
-@Table(name = "TB_ATENDIMENTO")
+@Table(name = "tb_atendimento")
 public class Atendimento {
 
     Atendimento(){

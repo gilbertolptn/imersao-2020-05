@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
-@Table(name = "TB_ANIMAL")
+@Table(name = "tb_animal")
 public class Animal {
 
     @Id

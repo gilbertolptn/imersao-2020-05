@@ -30,7 +30,7 @@ public class UnidadeRepository {
 
         return jdbcTemplate
                 //.queryForList("select nome from unidade", String.class);
-                .query("select id,nome,endereco from UNIDADE",
+                .query("select id,nome,endereco from unidade",
                         (rs, rowNum) -> new UnidadeDto(
                                 rs.getInt("id"),
                                 rs.getString("nome"),
@@ -56,7 +56,7 @@ public class UnidadeRepository {
 
         return jdbcTemplate
                 //.queryForList("select nome from unidade", String.class);
-                .queryForObject("select id,nome,endereco from UNIDADE where id = ?",
+                .queryForObject("select id,nome,endereco from unidade where id = ?",
                         new Object[]{idUnidade},
                         (rs, rowNum) -> new UnidadeDto(
                                 rs.getInt("id"),
@@ -65,12 +65,12 @@ public class UnidadeRepository {
     }
 
     public void salvar(UnidadeDto unidade) {
-        jdbcTemplate.update("update UNIDADE set nome = ?, endereco = ? where id = ?",
+        jdbcTemplate.update("update unidade set nome = ?, endereco = ? where id = ?",
                 unidade.getNome(), unidade.getEndereco(), unidade.getId());
     }
 
     public void remover(Long id) {
-        jdbcTemplate.update("delete from UNIDADE where id = ?", id);
+        jdbcTemplate.update("delete from unidade where id = ?", id);
     }
 
 //    .query("select id,nome,endereco from unidade", this::converteResultSetEmUnidadeDto);

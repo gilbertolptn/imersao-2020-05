@@ -8,6 +8,7 @@ import br.com.tt.petshop.exception.ErroNegocioException;
 import br.com.tt.petshop.model.Animal;
 import br.com.tt.petshop.model.Cliente;
 import br.com.tt.petshop.repository.AnimalRepository;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service
+@Configuration
 public class AnimalService {
 
     //Você pode injetar tanto classes quanto interfaces

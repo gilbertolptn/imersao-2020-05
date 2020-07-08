@@ -1,7 +1,7 @@
 package br.com.tt.petshop.api;
 
-import br.com.tt.petshop.dto.UnidadeEntradaDto;
 import br.com.tt.petshop.dto.UnidadeDto;
+import br.com.tt.petshop.dto.UnidadeEntradaDto;
 import br.com.tt.petshop.service.UnidadeService;
 import io.swagger.annotations.*;
 import org.springframework.http.MediaType;
